@@ -1,0 +1,96 @@
+//PUT rd_expert_text
+{
+  "index_patterns": ["rd_expert*"],
+  "template": {
+    "settings":{
+      "number_of_shards": 1,
+      "number_of_replicas": 1,
+      "analysis":{
+        "analyzer":{
+          "en_analyzer":{
+            "type":"custom",
+            "tokenizer":"standard",
+            "filter": [
+              "lowercase",
+              "english_stop",
+              "en_snowball",
+              "synonym"
+            ]
+          }
+        },
+        "filter":{
+          "english_stop":{
+            "type":"stop",
+            "stopwords":"_english_"
+          },
+          "en_snowball": {
+            "type": "snowball",
+            "language": "English"
+          },
+          "synonym": {
+            "type": "synonym",
+            "synonyms": [
+              "MFET, MosFET",
+              "TRX, Transistor",
+              "DIO, Diode",
+              "ZD, Zener Diode",
+              "TVS, Transient Voltage Suppressor",
+              "SCR, Silicon Controlled Rectifier",
+              "RV, Absorber",
+              "RT, Thermal Resister",
+              "VR, Variable Resister",
+              "RES, Resistor",
+              "JUMP, Jumper",
+              "CAP, Capacitor",
+              "XFMR, Transformer",
+              "CON, Connector, Wafer",
+              "RLY, Relay",
+              "SW, Switch",
+              "R&N,Ripple & Noise",
+              "R/N, Ripple / Noise",
+              "CE, Conduction",
+              "CT, Current Transformer",
+              "SR, Synchronous Rectifier",
+              "PSFB, Phase Shift Full Bridge"
+            ]
+          }
+        }
+      }
+    },
+    "mappings":{
+      "properties":{
+        "uuid": {
+          "type":"keyword"
+        },
+        "content": {
+          "type":"text",
+          "analyzer":"en_analyzer",
+          "search_analyzer":"en_analyzer"
+        },
+        "chunk_id": {
+          "type":"keyword"
+        },
+        "embedding": {
+          "type": "dense_vector",
+          "dims": 1536,
+          "index": true,
+          "similarity": "cosine"
+        },
+        "filename": {
+          "type":"text",
+          "analyzer":"en_analyzer",
+          "search_analyzer":"en_analyzer"
+        },
+        "BU": {
+          "type":"keyword"
+        },
+        "blob_url": {
+          "type":"keyword"
+        },
+        "summary": {
+          "type":"keyword"
+        }
+      }
+    }
+  }
+}

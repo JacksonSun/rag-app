@@ -1,0 +1,65 @@
+version: "1.0"
+
+services:
+  api:
+    build:
+      context: ./
+      dockerfile: Dockerfile.api
+    image: rag-api
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+    ports:
+      - "8000:8000"
+    depends_on:
+      - elasticsearch
+
+  client:
+    build:
+      context: app/
+      dockerfile: Dockerfile.client
+    image: rag-client
+    ports:
+      - "80:3000"
+    environment:
+      - NEXT_PUBLIC_API_ENDPOINT=http://0.0.0.0:8000
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.8.2
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - node.name=elasticsearch
+      - xpack.security.enabled=false
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "9200:9200"
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+
+volumes:
+  esdata:
+    driver: local
+#   postgres:
+#     image: postgres:13
+#     environment:
+#       - POSTGRES_DB=mydatabase
+#       - POSTGRES_USER=myuser
+#       - POSTGRES_PASSWORD=mypassword
+#     volumes:
+#       - db_data:/var/lib/postgresql/data
+#     ports:
+#       - "5432:5432"
+
+#   init-db:
+#     image: postgres:13
+#     depends_on:
+#       - postgres
+#     volumes:
+#       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+#     command: psql -h postgres -U myuser -d mydatabase -f /docker-entrypoint-initdb.d/init.sql
+
+# volumes:
+#   db_data: {}

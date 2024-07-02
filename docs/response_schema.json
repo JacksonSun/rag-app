@@ -1,0 +1,33 @@
+{
+  "response": {
+    "summary": "sample summary",
+    "source": [
+      {
+        "id": "testid:13fdfjiod3rfsdfjoi",
+        "url": "/tmp/source_example.pdf",
+        "similarity": 0.123431343,
+        "detail": {
+          "summary": "The related content summary",
+          "root_cause": "Issue caused by misconfiguration",
+          "solution": "Update configuration settings",
+          "side_effect": "Temporary performance degradation"
+        },
+        "contact_person": "John Doe",
+        "screenshot_url": "https://example.com/screenshot1.png"
+      },
+      {
+        "id": "testid:abcdefg12345",
+        "url": "/tmp/source_example2.pdf",
+        "similarity": 0.144562349,
+        "detail": {
+          "summary": "Summary of related content",
+          "root_cause": "Data corruption due to power outage",
+          "solution": "Perform data integrity checks and restore from backup",
+          "side_effect": "Data inconsistencies in related systems"
+        },
+        "contact_person": "Jane Smith",
+        "screenshot_url": "https://example.com/screenshot2.png"
+      }
+    ]
+  }
+}
