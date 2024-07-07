@@ -2,7 +2,7 @@
 # -*- encoding: utf-8 -*-
 
 
-from const import PAGE_SPLITTER, MIN_LINE_CHARS, SPECIAL_CHARS
+from const import MIN_LINE_CHARS, PAGE_SPLITTER, SPECIAL_CHARS
 
 
 def remove_lines(text: str, min_chars: int = 10) -> str:

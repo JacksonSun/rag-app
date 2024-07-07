@@ -3,14 +3,10 @@
 # -*- encoding: utf-8 -*-
 
 
-from sqlalchemy.orm import Session
-
-
-from pydantic_schemas.user import UserCreate as PydanticUserCreate
-
-from pydantic_schemas.user import User as PydancticUser
-
 from db.models.user import User as DBUser
+from pydantic_schemas.user import User as PydancticUser
+from pydantic_schemas.user import UserCreate as PydanticUserCreate
+from sqlalchemy.orm import Session
 
 
 def create_user(db: Session, user: PydanticUserCreate):

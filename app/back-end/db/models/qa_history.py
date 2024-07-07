@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 
-from sqlalchemy import Column, Integer, String, ARRAY
+from sqlalchemy import ARRAY, Column, Integer, String
 
-from .mixins import TimestampMixin
 from ..init_db import Base
+from .mixins import TimestampMixin
 
 
 class History(TimestampMixin, Base):

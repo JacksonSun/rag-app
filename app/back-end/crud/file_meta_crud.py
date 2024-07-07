@@ -2,10 +2,9 @@
 # -*- encoding: utf-8 -*-
 
 
-from sqlalchemy.orm import Session
-
-from pydantic_schemas.file_meta import FileCreate as PydancticFileCreate
 from db.models.file_meta import File as DBFile
+from pydantic_schemas.file_meta import FileCreate as PydancticFileCreate
+from sqlalchemy.orm import Session
 
 
 def create_new_file(db: Session, file: PydancticFileCreate):

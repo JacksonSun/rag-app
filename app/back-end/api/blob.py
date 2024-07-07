@@ -1,22 +1,20 @@
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 
-import tempfile
 import os
+import tempfile
 import traceback
-from azure.storage.blob import (
-    BlobServiceClient,
-    ContentSettings,
-)
-from azure.core.exceptions import ResourceNotFoundError, ResourceExistsError
+
+from azure.core.exceptions import ResourceExistsError, ResourceNotFoundError
+from azure.storage.blob import BlobServiceClient, ContentSettings
+from config import BLOB_CONTAINER_NAME
 from langchain.document_loaders import (
-    TextLoader,
     Docx2txtLoader,
-    UnstructuredWordDocumentLoader,
+    TextLoader,
     UnstructuredPowerPointLoader,
+    UnstructuredWordDocumentLoader,
 )
 from langchain.document_loaders.pdf import UnstructuredPDFLoader
-from config import BLOB_CONTAINER_NAME
 
 
 class Blob:

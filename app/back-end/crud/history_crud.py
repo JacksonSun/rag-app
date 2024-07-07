@@ -4,8 +4,8 @@
 
 from sqlalchemy.orm import Session
 
-from ..pydantic_schemas.qa_history import HistoryCreate as PydanticHistoryCreate
 from ..db.models.qa_history import History as DBHistory
+from ..pydantic_schemas.qa_history import HistoryCreate as PydanticHistoryCreate
 
 
 def create_new_qa_history(db: Session, qa_hist: PydanticHistoryCreate):

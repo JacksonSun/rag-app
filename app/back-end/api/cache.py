@@ -1,7 +1,8 @@
+import hashlib
+
 from gptcache import Cache
 from gptcache.manager.factory import manager_factory
 from gptcache.processor.pre import get_prompt
-import hashlib
 
 
 def get_hashed_name(name):

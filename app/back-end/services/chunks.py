@@ -1,18 +1,19 @@
-from typing import Dict, List, Optional, Tuple
 import uuid
-from pydantic_schemas.document import Document, DocumentChunk, DocumentChunkMetadata
+from typing import Dict, List, Optional, Tuple
 
-import tiktoken
 import fitz
-from services.openai import get_embeddings
+import tiktoken
 from const import (
     CHUNK_SIZE,
-    MIN_CHUNK_SIZE_CHARS,
-    MIN_CHUNK_LENGTH_TO_EMBED,
     EMBEDDINGS_BATCH_SIZE,
     MAX_NUM_CHUNKS,
+    MIN_CHUNK_LENGTH_TO_EMBED,
+    MIN_CHUNK_SIZE_CHARS,
     PAGE_SPLITTER,
 )
+from pydantic_schemas.document import Document, DocumentChunk, DocumentChunkMetadata
+from services.openai import get_embeddings
+
 from .preprocess import clean_data
 
 # Global variables

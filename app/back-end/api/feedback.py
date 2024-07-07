@@ -1,7 +1,8 @@
 from crud.feedback_crud import create_feedback
-from .utils import get_postgre_conn, convert_datetime_to_str
-from pydantic_schemas.feedback import FeedbackCreate, Feedback
 from fastapi.encoders import jsonable_encoder
+from pydantic_schemas.feedback import Feedback, FeedbackCreate
+
+from .utils import convert_datetime_to_str, get_postgre_conn
 
 
 def create_a_feedback(feedback: FeedbackCreate) -> Feedback:

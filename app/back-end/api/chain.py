@@ -1,14 +1,12 @@
-from langchain.output_parsers import PydanticOutputParser
-from pydantic import BaseModel, Field
-from langchain.chains import LLMChain
 import asyncio
-from langchain.prompts import PromptTemplate
+
 import redis
-from config import (
-    REDIS_HOST,
-    REDIS_PORT,
-    REDIS_PASSWORD,
-)
+from config import REDIS_HOST, REDIS_PASSWORD, REDIS_PORT
+from langchain.chains import LLMChain
+from langchain.output_parsers import PydanticOutputParser
+from langchain.prompts import PromptTemplate
+from pydantic import BaseModel, Field
+
 from .prompting import EMI_SUMMARY_PROMPT_TEMPLATE
 
 

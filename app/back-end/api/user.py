@@ -1,9 +1,11 @@
 from typing import Union
+
 from crud.user_crud import create_user, update_user
-from .utils import get_postgre_conn, convert_datetime_to_str
-from services.external_api import get_eflow_data
-from pydantic_schemas.user import UserCreate, UserUpdate
 from fastapi.encoders import jsonable_encoder
+from pydantic_schemas.user import UserCreate, UserUpdate
+from services.external_api import get_eflow_data
+
+from .utils import convert_datetime_to_str, get_postgre_conn
 
 
 def _get_eflow_user_data(username: str = "") -> dict:

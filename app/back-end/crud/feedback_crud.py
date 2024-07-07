@@ -2,10 +2,9 @@
 # -*- encoding: utf-8 -*-
 
 
-from sqlalchemy.orm import Session
-
-from pydantic_schemas.feedback import FeedbackCreate as PydanticFeedbackCreate
 from db.models.feedback import Feedback as DBFeedback
+from pydantic_schemas.feedback import FeedbackCreate as PydanticFeedbackCreate
+from sqlalchemy.orm import Session
 
 
 def create_feedback(db: Session, feedback: PydanticFeedbackCreate):

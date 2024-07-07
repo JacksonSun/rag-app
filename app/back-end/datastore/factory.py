@@ -2,8 +2,8 @@
 # -*- encoding: utf-8 -*-
 
 
-from datastore.datastore import DataStore
 from config import DATASTORE
+from datastore.datastore import DataStore
 
 
 async def get_datastore() -> DataStore:

@@ -5,36 +5,35 @@
 import asyncio
 import uuid
 from datetime import datetime
-from fastapi import UploadFile
 from typing import AsyncIterable
-from langchain.prompts import ChatPromptTemplate
-from langchain.prompts.chat import HumanMessagePromptTemplate
-from langchain.chat_models import AzureChatOpenAI
-from langchain.callbacks import AsyncIteratorCallbackHandler
 
-from .prompting import UPLOAD_DOCUMENT_SUMMARY_PROMPT_TEMPLATE
+from api.blob import Blob
 from config import (
-    OPENAI_API_KEY,
+    BLOB_CONTAINER_NAME,
+    BLOB_CONTAINER_NAME_TMP,
+    BLOB_SERVICE_CONNECT_STR,
     OPENAI_API_BASE,
+    OPENAI_API_KEY,
     OPENAI_API_TYPE,
     OPENAI_API_VERSION,
-    BLOB_CONTAINER_NAME_TMP,
-    BLOB_CONTAINER_NAME,
-    BLOB_SERVICE_CONNECT_STR,
 )
+from crud.file_meta_crud import create_new_file, get_files
+from fastapi import UploadFile
+from fastapi.encoders import jsonable_encoder
+from langchain.callbacks import AsyncIteratorCallbackHandler
+from langchain.chat_models import AzureChatOpenAI
+from langchain.prompts import ChatPromptTemplate
+from langchain.prompts.chat import HumanMessagePromptTemplate
+from pydantic_schemas.file_meta import FileCreate
 
+from .prompting import UPLOAD_DOCUMENT_SUMMARY_PROMPT_TEMPLATE
 from .utils import (
-    get_postgre_conn,
     clean_db_response,
+    convert_datetime_to_str,
     get_contact_person_from_filename,
     get_kafka_producer,
-    convert_datetime_to_str,
+    get_postgre_conn,
 )
-from crud.file_meta_crud import get_files, create_new_file
-from pydantic_schemas.file_meta import FileCreate
-from api.blob import Blob
-from fastapi.encoders import jsonable_encoder
-
 
 VALID_CONTENT_TYPES = [
     "application/pdf",  # .pdf

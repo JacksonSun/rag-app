@@ -1,18 +1,18 @@
+import csv
+import mimetypes
 import os
 from io import BufferedReader
 from typing import Optional
-from fastapi import UploadFile
-import mimetypes
-import fitz
-import csv
-import pptx
+
 import docx2txt
+import fitz
+import pptx
+from const import PAGE_SPLITTER
+from fastapi import UploadFile
 from loguru import logger
+from pydantic_schemas.document import Document, DocumentMetadata
 
 # import tabula
-
-from pydantic_schemas.document import Document, DocumentMetadata
-from const import PAGE_SPLITTER
 
 
 async def get_document_from_file(

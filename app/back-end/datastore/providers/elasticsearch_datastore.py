@@ -1,12 +1,26 @@
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 
-from typing import Dict, List, Any, Optional
+from typing import Any, Dict, List, Optional
+
 import elasticsearch
+from config import (
+    ELASTICSEARCH_API_KEY,
+    ELASTICSEARCH_CLOUD_ID,
+    ELASTICSEARCH_INDEX,
+    ELASTICSEARCH_PASSWORD,
+    ELASTICSEARCH_REPLICAS,
+    ELASTICSEARCH_SHARDS,
+    ELASTICSEARCH_URL,
+    ELASTICSEARCH_USERNAME,
+    NUM_CANDIDATES,
+    SEARCH_TYPE,
+    SIZE,
+    K,
+)
+from datastore.datastore import DataStore
 from elasticsearch import Elasticsearch
 from loguru import logger
-
-from datastore.datastore import DataStore
 from pydantic_schemas.document import (
     DocumentChunk,
     DocumentChunkWithScore,
@@ -15,20 +29,6 @@ from pydantic_schemas.document import (
     QueryWithEmbedding,
 )
 from services.date import to_unix_timestamp
-from config import (
-    ELASTICSEARCH_URL,
-    ELASTICSEARCH_CLOUD_ID,
-    ELASTICSEARCH_USERNAME,
-    ELASTICSEARCH_PASSWORD,
-    ELASTICSEARCH_API_KEY,
-    ELASTICSEARCH_INDEX,
-    ELASTICSEARCH_REPLICAS,
-    ELASTICSEARCH_SHARDS,
-    SEARCH_TYPE,
-    K,
-    SIZE,
-    NUM_CANDIDATES,
-)
 
 VECTOR_SIZE = 1536
 UPSERT_BATCH_SIZE = 100

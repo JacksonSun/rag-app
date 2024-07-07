@@ -1,7 +1,8 @@
-from pydantic import BaseModel
-from typing import List, Optional, Sequence
 from enum import Enum
+from typing import List, Optional, Sequence
+
 import fitz
+from pydantic import BaseModel, ConfigDict
 
 
 class Source(str, Enum):
@@ -38,6 +39,9 @@ class DocumentChunkWithScore(DocumentChunk):
 
 
 class Document(BaseModel):
+    class Config:
+        arbitrary_types_allowed = True
+
     id: Optional[str] = None
     doc: Optional[fitz.fitz.Document] = None
     text: str

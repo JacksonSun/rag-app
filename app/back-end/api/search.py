@@ -2,36 +2,33 @@
 # -*- encoding: utf-8 -*-
 
 from typing import Iterable, List
-from pydantic_schemas.document import DocumentChunk
-from googleapiclient.discovery import build
-from services.openai import (
-    stream_completion_response,
-    stream_chat_response,
-    get_completion,
-)
 
-from datastore.datastore import DataStore
-from pydantic_schemas.document import Query
-from .prompting import (
-    OVERALL_RESPONSE_PROMPT,
-    SYSTEM_CHAT_TEMPLATE,
-    EXAMPLE_A,
-    EXAMPLE_Q,
-    QUERY_TEMPLATE,
-    FILE_SUMMARY_SYSTEM_PROMPT,
-    FILE_SUMMARY_USER_PROMPT,
-)
-from config import (
-    GOOGLE_API_KEY,
-    GOOGLE_CSE_ID,
-)
+from config import GOOGLE_API_KEY, GOOGLE_CSE_ID
 from const import (
+    FILE_SUMMARY_CHARATER_LIMIT,
+    FILE_SUMMARY_MODEL,
+    FILE_SUMMARY_MODEL_TEMPERATURE,
+    MAX_TOKENS,
     RESPONSE_MODEL,
     RESPONSE_TEMPERATURE,
-    MAX_TOKENS,
-    FILE_SUMMARY_MODEL,
-    FILE_SUMMARY_CHARATER_LIMIT,
-    FILE_SUMMARY_MODEL_TEMPERATURE,
+)
+from datastore.datastore import DataStore
+from googleapiclient.discovery import build
+from pydantic_schemas.document import DocumentChunk, Query
+from services.openai import (
+    get_completion,
+    stream_chat_response,
+    stream_completion_response,
+)
+
+from .prompting import (
+    EXAMPLE_A,
+    EXAMPLE_Q,
+    FILE_SUMMARY_SYSTEM_PROMPT,
+    FILE_SUMMARY_USER_PROMPT,
+    OVERALL_RESPONSE_PROMPT,
+    QUERY_TEMPLATE,
+    SYSTEM_CHAT_TEMPLATE,
 )
 
 # from services.translate import translate  ## TODO replace with google translator

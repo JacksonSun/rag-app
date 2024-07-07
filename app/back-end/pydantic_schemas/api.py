@@ -1,12 +1,9 @@
-from fastapi import Form, UploadFile
-from .document import (
-    Document,
-    DocumentMetadataFilter,
-    Query,
-    QueryResult,
-)
-from pydantic import BaseModel
 from typing import List, Optional
+
+from fastapi import Form, UploadFile
+from pydantic import BaseModel
+
+from .document import Document, DocumentMetadataFilter, Query, QueryResult
 
 
 class UpsertRequest(BaseModel):

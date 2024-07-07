@@ -2,9 +2,9 @@
 # -*- encoding: utf-8 -*-
 
 
+import asyncio
 from abc import ABC, abstractmethod
 from typing import Dict, List, Optional
-import asyncio
 
 from pydantic_schemas.document import (
     Document,

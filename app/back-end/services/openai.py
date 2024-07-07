@@ -2,20 +2,20 @@
 # -*- encoding: utf-8 -*-
 
 
-import openai
 from typing import List, Optional
-from tenacity import retry, wait_random_exponential, stop_after_attempt
-from langchain.embeddings.openai import OpenAIEmbeddings
-from langchain.chat_models import AzureChatOpenAI
-from langchain.callbacks import AsyncIteratorCallbackHandler
 
+import openai
 from config import (
-    OPENAI_API_KEY,
+    OPENAI_ADA_EMBEDDING_DEPLOYMENT_NAME,
     OPENAI_API_BASE,
+    OPENAI_API_KEY,
     OPENAI_API_TYPE,
     OPENAI_API_VERSION,
-    OPENAI_ADA_EMBEDDING_DEPLOYMENT_NAME,
 )
+from langchain.callbacks import AsyncIteratorCallbackHandler
+from langchain.chat_models import AzureChatOpenAI
+from langchain.embeddings.openai import OpenAIEmbeddings
+from tenacity import retry, stop_after_attempt, wait_random_exponential
 
 openai.api_base = OPENAI_API_BASE
 openai.api_key = OPENAI_API_KEY
@@ -55,7 +55,8 @@ def get_embeddings(texts: List[str]) -> List[List[float]]:
 
 
 from typing import List
-from tenacity import retry, wait_random_exponential, stop_after_attempt
+
+from tenacity import retry, stop_after_attempt, wait_random_exponential
 
 
 def get_completion(

@@ -1,12 +1,11 @@
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 
-from typing import Any, Dict, Optional
-from fastapi.responses import JSONResponse
-
-import time
 import json
-from typing import Any
+import time
+from typing import Any, Dict, Optional
+
+from fastapi.responses import JSONResponse
 
 
 class ApiResponse(JSONResponse):
@@ -26,7 +25,6 @@ class ApiResponse(JSONResponse):
         message=None,
         **options
     ):
-
         if result:
             self.result = result
         if message:

@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 
-from db.init_db import init_db
-from datetime import datetime
-from kafka import KafkaProducer
 import json
+from datetime import datetime
+
+from db.init_db import init_db
+from kafka import KafkaProducer
 
 
 def get_postgre_conn():

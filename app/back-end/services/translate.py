@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 
-import requests
 import uuid
-from tenacity import retry, wait_random_exponential, stop_after_attempt
-from config import TRANSLATE_KEY, TRANSLATE_EP, TRANSLATE_LOCATION, TRANSLATE_PATH
+
+import requests
+from config import TRANSLATE_EP, TRANSLATE_KEY, TRANSLATE_LOCATION, TRANSLATE_PATH
+from tenacity import retry, stop_after_attempt, wait_random_exponential
 
 
 @retry(wait=wait_random_exponential(min=1, max=20), stop=stop_after_attempt(3))

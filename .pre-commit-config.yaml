@@ -47,22 +47,22 @@ repos:
         entry: .venv/bin/black
         language: system
         types: [python]
-        files: ^src/astellas_pj_champion_xta
-        exclude: ^src/astellas_pj_champion_xta/pmpx_pkg
+        files: ^app
+        # exclude: ^src/astellas_pj_champion_xta/pmpx_pkg
       - id: isort
         name: isort
         description: isort your imports for you so you don't have to.
         entry: .venv/bin/isort
         language: system
         types: [python]
-        files: ^src/astellas_pj_champion_xta
-        exclude: ^src/astellas_pj_champion_xta/pmpx_pkg
+        files: ^app
+        # exclude: ^src/astellas_pj_champion_xta/pmpx_pkg
         args: ["--profile", "black"]
-      - id: flake8
-        name: flake8
-        description: flake8 is a python tool that glues together pep8, pyflakes, mccabe, and third-party plugins to check the style and quality of some python code.
-        entry: .venv/bin/flake8
-        language: system
-        types: [python]
-        files: ^src/astellas_pj_champion_xta
-        exclude: ^src/astellas_pj_champion_xta/pmpx_pkg
+      # - id: flake8
+      #   name: flake8
+      #   description: flake8 is a python tool that glues together pep8, pyflakes, mccabe, and third-party plugins to check the style and quality of some python code.
+      #   entry: .venv/bin/flake8
+      #   language: system
+      #   types: [python]
+      #   files: ^app
+      #   # exclude: ^src/astellas_pj_champion_xta/pmpx_pkg
